@@ -42,19 +42,47 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
     
     if (cell == Nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellID];
     }
     
     //config the cell
+    UIImage *image = [UIImage imageNamed:@"star.png"];
+    cell.imageView.image = image;
+    
+    UIImage *imageHighlight = [UIImage imageNamed:@"star2.png"];
+    cell.imageView.highlightedImage = imageHighlight;
+    
+    
     NSInteger row = indexPath.row;
     cell.textLabel.text = [self.dwarves objectAtIndex:row];
-    NSLog(@"Called:");
+    
+    if (row < 7) {
+        cell.detailTextLabel.text = @"Mr. Disney";
+    } else {
+        cell.detailTextLabel.text = @"Mr. Tolkien";
+    }
+    
+    
     return cell;
     
 }
 
+#pragma mark - tableView delegate
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"You picked: %@", [self.dwarves objectAtIndex:indexPath.row]);
+}
 
 @end
+
+
+
+
+
+
+
 
 
 
