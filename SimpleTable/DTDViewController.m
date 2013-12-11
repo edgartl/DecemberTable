@@ -17,7 +17,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	NSArray *array = [[NSArray alloc] initWithObjects:@"Sleepy", @"Sneezy",
+                      @"Bashful", @"Happy", @"Doc", @"Grumpy", @"Dopey", @"Thorin",
+                      @"Dorin", @"Nori", @"Ori", @"Balin", @"Dwalin", @"Fili", @"Kili",
+                      @"Oin", @"Gloin", @"Bifur", @"Bofur", @"Bombur", nil];
+    
+    self.dwarves = array;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
