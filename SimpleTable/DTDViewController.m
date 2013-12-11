@@ -24,13 +24,45 @@
     
     self.dwarves = array;
     
+}
+
+#pragma mark - tableView Data source
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    return [self.dwarves count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellID = @"CellID";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+    
+    if (cell == Nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
+    }
+    
+    //config the cell
+    NSInteger row = indexPath.row;
+    cell.textLabel.text = [self.dwarves objectAtIndex:row];
+    NSLog(@"Called:");
+    return cell;
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
